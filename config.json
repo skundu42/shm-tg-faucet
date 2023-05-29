@@ -1,0 +1,6 @@
+{
+	"faucet": true,
+	"perClaim": 12,
+	"coolOff": 12,
+	"groupID": ""
+}
