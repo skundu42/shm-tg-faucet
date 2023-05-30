@@ -1,5 +1,19 @@
 # Shardeum Faucet Telegram Bot
 
+## Configuration  
+The `config.json` file contains the configuration of the bot. The bot should be restarted after making the changes to config in order for the new changes to take place.  
+The config properties can be accessed via _config_ variable from any file.
+
+## Config Properties  
+| Property    | Type  | Default | Description |
+| :---        |:----: |  :---:   |    :---:     |
+| faucet      | bool  | true    | Turn the faucet on or off |
+| perClaim    | int   | 12      | No. of SHM tokens can be claimed once |
+| cooloff     | int   | 12      | Cool off time between claims ( in Hour ) |
+
+
+
+
 ## Features
 1. Rate limit for 200 requests per second.
 2. 1 to 1 user wallet mapping. One user can have only one wallet. 
