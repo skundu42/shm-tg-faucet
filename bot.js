@@ -87,7 +87,9 @@ bot.onText(/^Main\sMenu/, function(msg){
 })
 
 bot.onText(/^\/fetchConfig/, function (msg) {
-    
+    let config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+    global.config = config;
+    bot.sendMessage(msg.chat.id, "Configuration has been updated");
 })
 bot.onText(/^(Help|\/help)/, function(msg){
     bot.sendMessage(msg.chat.id, "Welcome to Shardeum Faucet Bot.\n\nTo use the faucet, Please set a wallet first using the command _/wallet <your erc20 address>_.\n\nAfter that, tap on *Get SHM* to get SHM tokens on Shardeum Betanet (Sphinx).\n\nTo view your details, tap on Profile.\n\n\nPS: _Nobody from Shardeum community will ever DM you first. If you get a DM from someone pretending to be from team Shardeum, it's probably a scam._", {
