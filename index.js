@@ -10,7 +10,7 @@ async function sendRequest(req, res, next) {
     const remainingRequests = await limiter.removeTokens(1);
     next();
 }
-const bot = require('./bot');
+// const bot = require('./bot');
 const express = require('express');
 const TOKEN = process.env.token;
 const url = 'https://shardeumfaucet.adaptable.app';
@@ -22,13 +22,13 @@ const app = express();
 app.use(sendRequest);
 app.use(express.json());
 
-app.post(`/${TOKEN}`, (req, res) => {
-    try{
-        bot.processUpdate(req.body);
-        res.sendStatus(200);
-    }catch(e){
-    }
-});
+// app.post(`/${TOKEN}`, (req, res) => {
+//     try{
+//         bot.processUpdate(req.body);
+//         res.sendStatus(200);
+//     }catch(e){
+//     }
+// });
 app.get('/', (req,res) => {
     res.status(200).send("ok");
 })
