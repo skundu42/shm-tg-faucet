@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const ethers = require('ethers');
 const fs = require('fs');
-const bot = new TelegramBot(process.env.token, {polling: true});
+const bot = new TelegramBot(process.env.token/*, {polling: true}*/);
 
 const DB = require('./db');
 const database = new DB();
