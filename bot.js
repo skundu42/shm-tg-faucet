@@ -100,6 +100,7 @@ bot.onText(/^(Help|\/help)/, function(msg){
 bot.onText(/^(Donate|\/donate)/, function(msg){
     provider.getBalance(wallet.address).then(
         (balance) => {
+            console.log(balance)
             let currentBalance = 0;
             if(balance > 0){
                 currentBalance = parseInt(balance) / 10 ** 18;
