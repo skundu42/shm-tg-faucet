@@ -132,6 +132,7 @@ bot.onText(/^(Profile|\/profile)/, function(msg){
                 if(data.lastClaim){
                     let lastClaim = new Date(data.lastClaim).toLocaleString('nu', {dateStyle: 'medium', timeStyle: 'medium'});
                     message += `Last claimed on: _${lastClaim}_ UTC`;
+                    console.log(data);
                     if(data.lastTx && data.lastTx != ''){
                         message +=` ([tx](https://explorer-sphinx.shardeum.org/transaction/${data.lastTx})).`;
                     }
