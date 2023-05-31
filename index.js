@@ -13,7 +13,7 @@ async function sendRequest(req, res, next) {
 const bot = require('./bot');
 const express = require('express');
 const TOKEN = process.env.token;
-const url = 'https://shm-production-faucet.adaptable.app/';
+const url = 'http://63.142.254.102:3000';
 // bot.setWebHook(`${url}/${TOKEN}`);
 
 
