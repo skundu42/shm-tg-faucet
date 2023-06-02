@@ -4,3 +4,4 @@
 /.env
 .env
 /db/**.db
+/bot_old.js
