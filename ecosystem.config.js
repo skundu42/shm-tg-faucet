@@ -8,7 +8,7 @@ module.exports = {
                 args: "start",
                 env: {
                   NODE_ENV: "production",
-                  pKey: "40d186f1285456cc4b5af73ab82c0a2c8aa1b91ee8fb12b594efee9eee8684f4",
+                  pKey: "96f594cc9d90c6b2c3461605ac11ca57bfb7422eba66a964e11d95422fb88673",
                   token: "6326326139:AAGTxlBIEAI4rXxWRW1T2nbEiu1vO1gtZtE"
                 },
           },
