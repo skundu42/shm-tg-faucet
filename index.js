@@ -3,13 +3,7 @@ const fs = require('fs');
 let config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 global.config = config;
 
-const RateLimiter = require("limiter").RateLimiter;
-const limiter = new RateLimiter({ tokensPerInterval: 200, interval: "second" });
 
-async function sendRequest(req, res, next) {
-    const remainingRequests = await limiter.removeTokens(1);
-    next();
-}
 const bot = require('./bot');
 const express = require('express');
 const TOKEN = process.env.token;
@@ -19,7 +13,6 @@ const TOKEN = process.env.token;
 
 // bot.setWebHook(`${url}/bot${TOKEN}`);
 const app = express();
-app.use(sendRequest);
 app.use(express.json());
 
 app.post(`/${TOKEN}`, (req, res) => {
