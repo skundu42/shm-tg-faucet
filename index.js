@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 const fs = require('fs');
 let config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 global.config = config;

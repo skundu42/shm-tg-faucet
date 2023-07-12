@@ -2,13 +2,14 @@ const TelegramBot = require('node-telegram-bot-api');
 const ethers = require('ethers');
 const fs = require('fs');
 const bot = new TelegramBot(process.env.token, {polling: true});
-
+let config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+global.config = config;
 const DB = require('./db');
 const database = new DB();
 const RPC_DATA = {
-    url: "https://sphinx.shardeum.org/",
-    chainID: 8082,
-    name: "Shardeum Sphinx 1.X"
+    url: "https://dapps.shardeum.org",
+    chainID: 8081,
+    name: "Shardeum Sphinx Dapp 1.X"
 };
 const provider = new ethers.JsonRpcProvider(RPC_DATA.url);
 const wallet = new ethers.Wallet(process.env.pKey, provider);
@@ -50,6 +51,7 @@ bot.onText(/^(\/help|\/start)/, function(msg){
 	)
 })
 bot.onText(/^\/claim/, function(msg){
+    console.log(config.faucet);
     let userId = msg.from.id;
     let prepend = msg.from.first_name;
     if(config.faucet){
@@ -57,10 +59,12 @@ bot.onText(/^\/claim/, function(msg){
             (data) => {
                 if(!data){
                     const addr = msg.text.replace(/^\/claim\s?/, "");
+                    console.log("Test");
                     if(!ethers.isAddress(addr)){
                         bot.sendMessage(msg.chat.id, `Hey ${prepend}, please send a valid ERC20 address in the format */claim <your-address>*\n\n\nPS: _Nobody from Shardeum community will ever DM you first. If you get a DM from someone pretending to be from team Shardeum, it's probably a scam._`, {
                             parse_mode: 'markdown',
                         })
+                        
                     }
                     else{
                         //set address, claim
